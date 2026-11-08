@@ -1,5 +1,7 @@
 # ComfyUI OpenAI-Compatible API Image Proxy
+
 [English](README.md) | [繁體中文](README.zh-TW.md)
+
 將 ComfyUI 的 API 格式轉成 **OpenAI 相容的圖片生成 API**。任何支援 OpenAI `images/generations` / `images/edits` 的前端或 SDK，都可以直接把 Base URL 指向這個服務，用你自己的 ComfyUI workflow 生圖。
 
 ## 功能特色
