@@ -1,5 +1,7 @@
 # ComfyUI OpenAI-Compatible API Image Proxy
+
 [English](README.md) | [繁體中文](README.zh-TW.md)
+
 Converts ComfyUI's API format into an **OpenAI-compatible image generation API**. Any frontend or SDK that supports OpenAI `images/generations` / `images/edits` can simply point its Base URL at this service and generate images with your own ComfyUI workflows.
 
 ## Features
