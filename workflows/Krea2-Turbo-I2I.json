@@ -1,0 +1,312 @@
+{
+  "29": {
+    "inputs": {
+      "filename_prefix": "krea2_identity_edit",
+      "images": [
+        "54",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image",
+      "cnr_id": "comfy-core",
+      "ver": "0.26.0"
+    }
+  },
+  "53": {
+    "inputs": {
+      "seed": "%seed%",
+      "steps": 5,
+      "cfg": 1,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1,
+      "model": [
+        "79",
+        0
+      ],
+      "positive": [
+        "84",
+        0
+      ],
+      "negative": [
+        "116",
+        0
+      ],
+      "latent_image": [
+        "114",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler",
+      "cnr_id": "comfy-core",
+      "ver": "0.26.0"
+    }
+  },
+  "54": {
+    "inputs": {
+      "samples": [
+        "53",
+        0
+      ],
+      "vae": [
+        "57",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode",
+      "cnr_id": "comfy-core",
+      "ver": "0.26.0"
+    }
+  },
+  "55": {
+    "inputs": {
+      "unet_name": "Krea2/redcraft2KREA2RedMix_11INT8Native.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "UNET Loader",
+      "cnr_id": "comfy-core",
+      "ver": "0.26.0"
+    }
+  },
+  "56": {
+    "inputs": {
+      "clip_name": "Qwen 3 VL/qwen3-vl-4b-heretic_int8.safetensors",
+      "type": "krea2",
+      "device": "default"
+    },
+    "class_type": "CLIPLoader",
+    "_meta": {
+      "title": "CLIP Loader",
+      "cnr_id": "comfy-core",
+      "ver": "0.26.0"
+    }
+  },
+  "57": {
+    "inputs": {
+      "vae_name": "qwen_image_vae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "VAE Loader",
+      "cnr_id": "comfy-core",
+      "ver": "0.26.0"
+    }
+  },
+  "72": {
+    "inputs": {
+      "image": "%image%"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image",
+      "cnr_id": "comfy-core",
+      "ver": "0.26.0"
+    }
+  },
+  "73": {
+    "inputs": {
+      "pixels": [
+        "72",
+        0
+      ],
+      "vae": [
+        "57",
+        0
+      ]
+    },
+    "class_type": "VAEEncode",
+    "_meta": {
+      "title": "VAE Encode",
+      "cnr_id": "comfy-core",
+      "ver": "0.26.0"
+    }
+  },
+  "79": {
+    "inputs": {
+      "ref_boost": 4,
+      "ref_boost_a": 1,
+      "fit_mode": "fit",
+      "model": [
+        "115",
+        0
+      ],
+      "source_latent": [
+        "73",
+        0
+      ],
+      "vae": [
+        "57",
+        0
+      ],
+      "source_image": [
+        "72",
+        0
+      ],
+      "target_latent": [
+        "114",
+        0
+      ]
+    },
+    "class_type": "Krea2EditModelPatch",
+    "_meta": {
+      "title": "Krea2 Edit (source patch)",
+      "cnr_id": "comfyui-krea2edit",
+      "ver": "1.2.3"
+    }
+  },
+  "84": {
+    "inputs": {
+      "prompt": "%prompt%",
+      "grounding_px": 768,
+      "system_prompt": "",
+      "clip": [
+        "56",
+        0
+      ],
+      "image": [
+        "72",
+        0
+      ]
+    },
+    "class_type": "Krea2EditGroundedEncode",
+    "_meta": {
+      "title": "Krea2 Edit (grounded encode)",
+      "cnr_id": "comfyui-krea2edit",
+      "ver": "1.2.3"
+    }
+  },
+  "114": {
+    "inputs": {
+      "width": [
+        "122",
+        1
+      ],
+      "height": [
+        "121",
+        1
+      ],
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image",
+      "cnr_id": "comfy-core",
+      "ver": "0.26.0"
+    }
+  },
+  "115": {
+    "inputs": {
+      "PowerLoraLoaderHeaderWidget": {
+        "type": "PowerLoraLoaderHeaderWidget"
+      },
+      "lora_1": {
+        "on": true,
+        "lora": "Krea2/krea2_identity_edit_v2_r128.safetensors",
+        "strength": 1
+      },
+      "lora_2": {
+        "on": true,
+        "lora": "Krea2/MysticXXX_KREA2_v2_stripped.safetensors",
+        "strength": 1
+      },
+      "lora_3": {
+        "on": true,
+        "lora": "Krea2/krea2_turbo_4step_rank_64_lora_comfyui.safetensors",
+        "strength": 1
+      },
+      "➕ Add Lora": "",
+      "model": [
+        "55",
+        0
+      ]
+    },
+    "class_type": "Power Lora Loader (rgthree)",
+    "_meta": {
+      "title": "Power Lora Loader (rgthree)",
+      "cnr_id": "rgthree-comfy",
+      "ver": "1.0.2610300006"
+    }
+  },
+  "116": {
+    "inputs": {
+      "conditioning": [
+        "84",
+        0
+      ]
+    },
+    "class_type": "ConditioningZeroOut",
+    "_meta": {
+      "title": "Conditioning Zero Out",
+      "cnr_id": "comfy-core",
+      "ver": "0.44.2"
+    }
+  },
+  "118": {
+    "inputs": {
+      "value": "%height%"
+    },
+    "class_type": "INTConstant",
+    "_meta": {
+      "title": "Height",
+      "cnr_id": "comfyui-kjnodes",
+      "ver": "1.5.3"
+    }
+  },
+  "119": {
+    "inputs": {
+      "value": "%width%"
+    },
+    "class_type": "INTConstant",
+    "_meta": {
+      "title": "Width",
+      "cnr_id": "comfyui-kjnodes",
+      "ver": "1.5.3"
+    }
+  },
+  "121": {
+    "inputs": {
+      "expression": "round((a * min(1.0, sqrt(1048576 / (a * b)))) / 16) * 16",
+      "values.a": [
+        "118",
+        0
+      ],
+      "values.b": [
+        "119",
+        0
+      ]
+    },
+    "class_type": "ComfyMathExpression",
+    "_meta": {
+      "title": "Height Adjust",
+      "cnr_id": "comfy-core",
+      "ver": "0.44.2"
+    }
+  },
+  "122": {
+    "inputs": {
+      "expression": "round((b * min(1.0, sqrt(1048576 / (a * b)))) / 16) * 16",
+      "values.a": [
+        "118",
+        0
+      ],
+      "values.b": [
+        "119",
+        0
+      ]
+    },
+    "class_type": "ComfyMathExpression",
+    "_meta": {
+      "title": "Width Adjust",
+      "cnr_id": "comfy-core",
+      "ver": "0.44.2"
+    }
+  }
+}

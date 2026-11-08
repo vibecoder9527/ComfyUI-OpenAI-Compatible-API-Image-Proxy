@@ -1,0 +1,170 @@
+{
+  "74": {
+    "inputs": {
+      "images": [
+        "79:56",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "79:56": {
+    "inputs": {
+      "samples": [
+        "79:54",
+        0
+      ],
+      "vae": [
+        "79:58",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "79:54": {
+    "inputs": {
+      "seed": [
+        "79:78",
+        0
+      ],
+      "steps": 6,
+      "cfg": 1,
+      "sampler_name": "er_sde",
+      "scheduler": "simple",
+      "denoise": 1,
+      "model": [
+        "79:72",
+        0
+      ],
+      "positive": [
+        "79:51",
+        0
+      ],
+      "negative": [
+        "79:71",
+        0
+      ],
+      "latent_image": [
+        "79:57",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "79:72": {
+    "inputs": {
+      "PowerLoraLoaderHeaderWidget": {
+        "type": "PowerLoraLoaderHeaderWidget"
+      },
+      "lora_1": {
+        "on": true,
+        "lora": "Krea2/krea2_turbo_4step_rank_64_lora_comfyui.safetensors",
+        "strength": 1
+      },
+      "lora_2": {
+        "on": true,
+        "lora": "Krea2/MysticXXX_KREA2_v2_stripped.safetensors",
+        "strength": 0.75
+      },
+      "lora_3": {
+        "on": true,
+        "lora": "Krea2/Breast_Size_Shape_fp16.safetensors",
+        "strength": 1
+      },
+      "➕ Add Lora": "",
+      "model": [
+        "79:52",
+        0
+      ]
+    },
+    "class_type": "Power Lora Loader (rgthree)",
+    "_meta": {
+      "title": "Power Lora Loader (rgthree)"
+    }
+  },
+  "79:78": {
+    "inputs": {
+      "seed": "%seed%"
+    },
+    "class_type": "easy seed",
+    "_meta": {
+      "title": "EasySeed"
+    }
+  },
+  "79:71": {
+    "inputs": {
+      "text": "censored, mosaic censoring, worst quality, low quality, artist name, deviant art",
+      "clip": [
+        "79:53",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode"
+    }
+  },
+  "79:53": {
+    "inputs": {
+      "clip_name": "Huihui-Qwen3-VL-4B-Instruct-abliterated-fp8_scaled.safetensors",
+      "type": "krea2",
+      "device": "default"
+    },
+    "class_type": "CLIPLoader",
+    "_meta": {
+      "title": "CLIP Loader"
+    }
+  },
+  "79:58": {
+    "inputs": {
+      "vae_name": "qwen_image_vae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "VAE Loader"
+    }
+  },
+  "79:52": {
+    "inputs": {
+      "unet_name": "Krea2/redcraft2KREA2RedMix_11INT8Native.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "UNET Loader"
+    }
+  },
+  "79:57": {
+    "inputs": {
+      "width": "%width%",
+      "height": "%height%",
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
+  },
+  "79:51": {
+    "inputs": {
+      "text": "%prompt%",
+      "clip": [
+        "79:53",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode"
+    }
+  }
+}
