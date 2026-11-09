@@ -8,7 +8,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY app-en.py ./app.py
-COPY workflow ./workflow
+COPY workflows ./workflows
 
 EXPOSE 8000
 
